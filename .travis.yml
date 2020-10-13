@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+    - docker
+
+before_install
+    - docker build -t radoszem/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true radoszem/docker-react npm run test
